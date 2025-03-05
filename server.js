@@ -26,9 +26,7 @@ app.use(bodyParser.json());
 app.use("/uploads", express.static("uploads"));
 
 mongoose
-  .connect(
-    "mongodb+srv://DIP224:$$112233@cluster0.1zair.mongodb.net/node-angular-assignment-db?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect("[]")
   .then(() => {
     console.log("connected to database");
   })
