@@ -1,0 +1,77 @@
+.container {
+  width: 100%;
+  margin: 6% auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 1%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.39);
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.filter-section {
+  margin-top: 20px;
+  display: flex;
+  column-gap: 20px;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-generate,
+.btn-reset {
+  padding: 20px 20px;
+
+  background-color: rgba(0, 155, 116, 0.8);
+  color: white;
+  margin-top: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-generate:hover,
+.btn-reset:hover {
+  background-color: rgba(0, 222, 167, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+.action-buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-print {
+  background-color: rgba(0, 238, 255, 0.8);
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-print:hover {
+  background-color: transparent;
+  background-color: rgba(0, 238, 255, 0.4);
+  color: black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.39);
+}
+
+.mat-elevation-z8 {
+  margin-top: 30px;
+}
+
+@media print {
+  .action-buttons,
+  .filter-section {
+    display: none;
+  }
+
+  .report-card,
+  .progress-card {
+    page-break-inside: avoid;
+  }
+}

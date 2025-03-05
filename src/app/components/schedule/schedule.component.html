@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<body>
+  <div class="container">
+    <h2>Schedule Waste Pickup</h2>
+
+    <form (ngSubmit)="schedulePickup()">
+      <!-- Date Selection -->
+      <label for="date">Preferred Date:</label>
+      <input
+        type="date"
+        id="date"
+        [(ngModel)]="pickupDate"
+        name="pickupDate"
+        [min]="minDate"
+        required
+      />
+
+      <!-- Time Selection -->
+      <label for="time">Preferred Time:</label>
+      <select id="time" [(ngModel)]="pickupTime" name="pickupTime" required>
+        <option *ngFor="let time of availableTimes" [value]="time">
+          {{ time }}
+        </option>
+      </select>
+
+      <!-- Waste Type Selection -->
+      <label for="wasteType">Select Waste Type:</label>
+      <select id="wasteType" [(ngModel)]="wasteType" name="wasteType" required>
+        <option *ngFor="let type of wasteTypes" [value]="type">
+          {{ type }}
+        </option>
+      </select>
+
+      <button type="submit">Confirm Pickup</button>
+    </form>
+  </div>
+
+  <!-- Confirmation Message -->
+  <div class="containerM">
+    <div class="ConMessage" *ngIf="confirmationMessage">
+      <p>{{ confirmationMessage }}</p>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,250 @@
+<app-header></app-header>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+/>
+
+<div class="container">
+  <div class="row">
+    <!-- Profile Section -->
+    <div class="col-md-3 profile-section">
+      <h2>Profile</h2>
+      <form [formGroup]="profileForm" (ngSubmit)="onSave()">
+        <div class="form-group">
+          <label for="username">Name</label>
+          <input
+            id="username"
+            placeholder="Username"
+            type="text"
+            name="name"
+            formControlName="username"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            placeholder="Email"
+            type="email"
+            name="email"
+            formControlName="email"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-container">
+            <input
+              id="password"
+              placeholder="Password"
+              type="password"
+              name="password"
+              formControlName="password"
+              class="form-control"
+              required
+            />
+            <span class="eye-icon" (click)="togglePasswordVisibility()">
+              <i
+                [ngClass]="
+                  showPassword ? 'bi bi-eye-slash-fill' : 'bi bi-eye-fill'
+                "
+              ></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contactNumber">Contact Number (+60)</label>
+          <input
+            id="contactNumber"
+            placeholder="(+60) 1234567890"
+            type="text"
+            name="contactNumber"
+            formControlName="contactNumber"
+            class="form-control"
+            maxlength="10"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            id="address"
+            placeholder="Address"
+            type="text"
+            name="address"
+            formControlName="address"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="communityName">Community Name</label>
+          <input
+            id="communityName"
+            placeholder="Community Name"
+            type="text"
+            name="communityName"
+            formControlName="communityName"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="toggleEditMode()"
+          *ngIf="!editMode"
+        >
+          Edit
+        </button>
+
+        <button type="submit" class="btn btn-success" *ngIf="editMode">
+          Save
+        </button>
+      </form>
+    </div>
+
+    <!-- History and Schedule Sections -->
+    <div class="col-md-9">
+      <div class="box-container">
+        <div class="box-flex">
+          <h3>History</h3>
+          <button
+            type="button"
+            class="btn btn-primary btn-cus"
+            routerLink="/pickup-history"
+          >
+            view more
+          </button>
+        </div>
+        <div class="box scrollable" id="historyBox">
+          <table class="table">
+            <thead>
+              <tr>
+                <th (click)="sortHistory('date')">
+                  Date
+                  <span class="sort-arrow" *ngIf="historySortKey === 'date'">{{
+                    historySortOrder === "asc" ? "▲" : "▼"
+                  }}</span>
+                </th>
+                <th (click)="sortHistory('pickupTime')">
+                  Pickup Time
+                  <span
+                    class="sort-arrow"
+                    *ngIf="historySortKey === 'pickupTime'"
+                    >{{ historySortOrder === "asc" ? "▲" : "▼" }}</span
+                  >
+                </th>
+                <th (click)="sortHistory('wasteType')">
+                  Waste Type
+                  <span
+                    class="sort-arrow"
+                    *ngIf="historySortKey === 'wasteType'"
+                    >{{ historySortOrder === "asc" ? "▲" : "▼" }}</span
+                  >
+                </th>
+                <th (click)="sortHistory('status')">
+                  Status
+                  <span
+                    class="sort-arrow"
+                    *ngIf="historySortKey === 'status'"
+                    >{{ historySortOrder === "asc" ? "▲" : "▼" }}</span
+                  >
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of completedHistory">
+                <td>{{ item.date | date : "shortDate" }}</td>
+                <td>{{ item.pickupTime }}</td>
+                <td>{{ item.wasteType }}</td>
+                <td>{{ item.status }}</td>
+              </tr>
+              <tr
+                *ngIf="completedHistory.length === 0"
+                style="text-align: center"
+              >
+                <td colspan="4">No completed schedule available.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box-container">
+          <div class="box-flex">
+            <h3>Schedule</h3>
+            <button
+              type="button"
+              class="btn btn-primary btn-cus"
+              routerLink="/schedule"
+            >
+              create schedule
+            </button>
+          </div>
+          <div class="box scrollable" id="scheduleBox">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th (click)="sortSchedule('date')">
+                    Date
+                    <span
+                      class="sort-arrow"
+                      *ngIf="scheduleSortKey === 'date'"
+                      >{{ scheduleSortOrder === "asc" ? "▲" : "▼" }}</span
+                    >
+                  </th>
+                  <th (click)="sortSchedule('pickupTime')">
+                    Pickup Time
+                    <span
+                      class="sort-arrow"
+                      *ngIf="scheduleSortKey === 'pickupTime'"
+                      >{{ scheduleSortOrder === "asc" ? "▲" : "▼" }}</span
+                    >
+                  </th>
+                  <th (click)="sortSchedule('wasteType')">
+                    Waste Type
+                    <span
+                      class="sort-arrow"
+                      *ngIf="scheduleSortKey === 'wasteType'"
+                      >{{ scheduleSortOrder === "asc" ? "▲" : "▼" }}</span
+                    >
+                  </th>
+                  <th (click)="sortSchedule('status')">
+                    Status
+                    <span
+                      class="sort-arrow"
+                      *ngIf="scheduleSortKey === 'status'"
+                      >{{ scheduleSortOrder === "asc" ? "▲" : "▼" }}</span
+                    >
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of sortedSchedule">
+                  <td>{{ item.date | date : "shortDate" }}</td>
+                  <td>{{ item.pickupTime }}</td>
+                  <td>{{ item.wasteType }}</td>
+                  <td>{{ item.status }}</td>
+                </tr>
+                <tr *ngIf="schedule.length === 0">
+                  <td colspan="4" style="text-align: center">
+                    <p>No schedule available.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

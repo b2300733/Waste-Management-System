@@ -1,0 +1,227 @@
+.container {
+  max-width: 90%;
+  width: 100%;
+  margin: 4% auto;
+}
+
+.admin-dashboard {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr; /* Left side takes up more space */
+  grid-template-rows: 1fr 1fr; /* Two rows for the right-side boxes */
+  grid-gap: 20px;
+  flex-wrap: wrap;
+}
+
+.section {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  flex: 1 1 300px;
+}
+
+.result-section {
+  margin-top: 20px;
+}
+
+.manage-users {
+  grid-column: 1 / 2; /* Left column */
+  grid-row: 1 / span 2; /* Spans two rows */
+}
+
+.title-container label,
+.message-container label,
+.manage-users-form label {
+  font-weight: bold;
+  color: #1d1d1d;
+  margin-bottom: 5px;
+}
+
+.title-container input,
+.message-container input,
+.manage-users-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.title-container input:hover,
+.message-container input:hover,
+.manage-users-form input:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+.title-container input:focus,
+.message-container input:focus,
+.manage-users-form input:focus {
+  border-color: #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+.manage-users-form-all {
+  margin: auto;
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.section h2 {
+  font-size: 22px;
+  color: #1d1d1d;
+  font-weight: bold;
+}
+
+.section p {
+  font-size: 16px;
+  color: #1d1d1d;
+}
+
+.btn-primary {
+  background-color: rgba(0, 155, 116, 0.8);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: rgba(0, 222, 167, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.39);
+}
+
+.find-user-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.manage-email-label {
+  font-weight: bold;
+  color: #1d1d1d;
+}
+
+.manage-email-input {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.manage-email-input:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+.manage-email-input:focus {
+  border-color: #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+.btn-search {
+  padding: 10px;
+  width: auto;
+}
+
+.title-container,
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message-container {
+  margin-top: 10px;
+}
+
+.resizable-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  resize: both;
+  overflow: auto;
+  width: 300px;
+  height: 200px;
+}
+
+.scrollable {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 10px;
+  overflow-y: auto;
+  max-height: 200px;
+  width: 100%;
+}
+
+.table th {
+  cursor: pointer;
+  background-color: rgb(0, 156, 70);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sort-arrow {
+  font-size: 0.7em;
+}
+
+/* Responsive design for smaller screens or zoomed-in views */
+@media (max-width: 1024px) {
+  .admin-dashboard {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section {
+    width: 100%;
+  }
+}
+
+.password-container {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.eye-icon i {
+  font-size: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.099);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: #28a745;
+  font-size: 18px;
+}

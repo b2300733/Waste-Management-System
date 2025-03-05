@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="section section-header"><h2>Notifications</h2></div>
+  <div class="notification-wrapper">
+    <div class="notifications">
+      <mat-card class="section">
+        <h3>Announcements</h3>
+      </mat-card>
+
+      <div class="scrollable">
+        <mat-card
+          *ngFor="let notification of notifications"
+          class="section notification-card"
+        >
+          <div class="content">
+            <h4>
+              <span style="font-weight: bold">Title: </span
+              >{{ notification.title }}
+            </h4>
+            <p>
+              <span style="font-weight: bold">Message: </span
+              >{{ notification.message }}
+            </p>
+            <div class="time-position notification-time">
+              {{ notification.createdAt | date : "short" }}
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="schedules">
+      <mat-card class="section">
+        <h3>Upcoming Pickups</h3>
+      </mat-card>
+
+      <div class="scrollable">
+        <mat-card
+          *ngFor="let schedule of schedules"
+          class="section notification-card"
+        >
+          <div class="content">
+            <h4>
+              <span style="font-weight: bold">Date: </span
+              >{{ schedule.date | date : "shortDate" }}
+            </h4>
+            <h4>
+              <span style="font-weight: bold">Pickup Time: </span
+              >{{ schedule.pickupTime }}
+            </h4>
+            <p>
+              <span style="font-weight: bold">Waste Type: </span
+              >{{ schedule.wasteType }}
+            </p>
+            <div class="time-position schedule-time">
+              Schedule was created at {{ schedule.createdAt | date : "short" }}
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

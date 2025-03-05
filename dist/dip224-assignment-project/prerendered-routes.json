@@ -1,0 +1,13 @@
+{
+  "routes": [
+    "/admin",
+    "/dashboard",
+    "/generate-report",
+    "/header",
+    "/login",
+    "/notification",
+    "/pickup-history",
+    "/report",
+    "/schedule"
+  ]
+}

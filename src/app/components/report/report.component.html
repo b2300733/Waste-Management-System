@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<body>
+  <div class="container">
+    <h2>Report Waste Management Issues</h2>
+
+    <form (ngSubmit)="submitReport()">
+      <!-- Issue Type Selection -->
+      <label for="issueType">Select Issue Type:</label>
+      <select
+        id="issueType"
+        class="bg-custom-trans"
+        [(ngModel)]="issueType"
+        name="issueType"
+        required
+      >
+        <option value="" disabled selected>Select issue type</option>
+        <option *ngFor="let type of issueTypes" [value]="type">
+          {{ type }}
+        </option>
+      </select>
+
+      <!-- Location Input -->
+      <label for="location">Location of the Issue:</label>
+      <input
+        type="text"
+        class="bg-custom-trans"
+        id="location"
+        [(ngModel)]="location"
+        name="location"
+        required
+      />
+
+      <!-- Description Input -->
+      <label for="description">Issue Description:</label>
+      <textarea
+        id="description"
+        class="bg-custom-trans"
+        [(ngModel)]="description"
+        name="description"
+        rows="4"
+        required
+      ></textarea>
+
+      <!-- Optional File Upload (Photos) -->
+      <label for="photo">Upload a Photo (optional):</label>
+      <input
+        type="file"
+        id="photo"
+        (change)="onFileSelected($event)"
+        #fileInput
+      />
+
+      <button type="submit">Submit Report</button>
+    </form>
+  </div>
+
+  <!-- Confirmation Message -->
+  <div class="containerM">
+    <div class="ConMessage" *ngIf="confirmationMessage">
+      <p>{{ confirmationMessage }}</p>
+    </div>
+  </div>
+</body>

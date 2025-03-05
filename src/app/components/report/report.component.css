@@ -1,0 +1,84 @@
+.container {
+  width: 50%;
+  margin: 2.5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.39);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label,
+input,
+select,
+textarea,
+button {
+  border-radius: 5px;
+}
+
+input,
+select,
+textarea {
+  margin-bottom: 2em;
+  padding: 10px;
+}
+
+.bg-custom-trans {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#location:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+label,
+h2 {
+  font-weight: bold;
+}
+
+h2 {
+  margin-bottom: 0.7em;
+}
+
+button {
+  background-color: rgba(0, 155, 116, 0.8);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: rgba(0, 222, 167, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+textarea {
+  resize: vertical;
+  transition: box-shadow 0.3s ease;
+}
+
+textarea:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+.containerM {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ConMessage {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}

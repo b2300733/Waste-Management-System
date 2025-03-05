@@ -1,0 +1,68 @@
+.container {
+  width: 50%;
+  margin: 7.5% auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 1%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.39);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label,
+input,
+select,
+button {
+  padding: 10px;
+  font-size: large;
+}
+
+input,
+select {
+  margin-top: 5px;
+  margin-bottom: 1em;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+label,
+h2 {
+  font-weight: bold;
+}
+
+button {
+  background-color: rgba(0, 155, 116, 0.8);
+  color: white;
+  border: none;
+  margin-top: 2em;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: rgba(0, 222, 167, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+input:hover,
+select:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.39);
+}
+
+.containerM {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ConMessage {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
